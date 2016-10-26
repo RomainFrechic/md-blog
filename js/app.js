@@ -26,7 +26,7 @@
     getDone:function(response){
     	console.log(response);
     	var converter = new showdown.Converter();
-			// var text = '#article, response';
+			var text = '#article, response';
 			var inj = converter.makeHtml(response);
 			$('#article').html(inj);
 		},
@@ -40,7 +40,7 @@
 		},
 	//Recuperer le menu.json
 	getMenu:function(){
-		$.ajax('http://192.168.1.40:1337/menu.json')
+		$.ajax('http://localhost:2000/menu.json')
 		.done(this.getMenuDone)
 		.fail(this.getMenuFail)
 		.always(this.getMenuAlways)
@@ -49,13 +49,10 @@
 	getMenuDone:function(response){
 		console.log(response);
 		var len = response.menu.length;
-		var title = response.menu[0].title;
-		var title2 = response.menu[1].title;
-		var path = response.menu[0].path;
-		var path2 = response.menu[1].path;
-
-		$('#menu').html('<button data-url="http://192.168.1.40:1337'+path+'">'+title+'</button><button data-url="http://192.168.1.40:1337'+path2+'">'+title2+'</button>');
-
+        for(var i=0; i<len; i++){
+        	console.log(i);
+		$('#menu').append('<button data-url="http://localhost:2000/'+response.menu[i].path+'">'+response.menu[i].title+'</button>');
+        }
 	},
 
 
@@ -64,7 +61,7 @@
 	},
 
 	getMenuAlways:function(){
-
+        console.log(completer);
 	},
 
 };
