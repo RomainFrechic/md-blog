@@ -10,10 +10,13 @@ function commande(nom, argument) {
       argument = prompt("Quelle est l'adresse de l'image ?");
       break;
   }
+  console.log(commande,"commande");
   // Exécuter la commande
   document.execCommand(nom, false, argument);
 }
 
 function resultat() {
-  document.getElementById("resultat").value = document.getElementById("editeur").innerHTML;
+  var result = document.getElementById("resultat").value = document.getElementById("editeur").innerHTML;
+  $('#contenu').append('<div>'+result+'</div>');
+  console.log(result);
 }
