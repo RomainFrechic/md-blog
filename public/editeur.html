@@ -6,16 +6,19 @@
 	<link rel="stylesheet" href="editeur.css">
 </head>
 <body>
-	<a href='index.html'>Retour</a>
-	<input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');" />
-	<input type="button" value="I" style="font-style: italic;" onclick="commande('italic');" />
-	<input type="button" value="S" style="text-decoration: underline;" onclick="commande('underline');" />
-	<div id="editeur" contentEditable></div>
-	<input type="button" onclick="resultat();" value="Obtenir le HTML" />
+	<a href='http://localhost:3000/'>Retour</a>
+	<form action="">
+		<input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');" />
+		<input type="button" value="I" style="font-style: italic;" onclick="commande('italic');" />
+		<input type="button" value="S" style="text-decoration: underline;" onclick="commande('underline');" />
+		<div id="editeur" contentEditable></div>
+		<input type="button" onclick="resultat();" value="Obtenir le HTML" />
+	</form>
 	<br />
 	<div id="resultat"></div>
 	<script src="/node_modules/jquery/dist/jquery.js"></script>
 	<script src="/node_modules/showdown/dist/showdown.js"></script>
 	<script src="editeur.js"></script>
+	<script src="/js/app.js"></script>
 </body>
 </html>

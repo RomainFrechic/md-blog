@@ -1,15 +1,17 @@
  function commande(nom, argument) {
-  if (typeof argument === 'undefined') {
-    argument = '';
-  }
+ 	if (typeof argument === 'undefined') {
+ 		argument = '';
+ 	}
 
-  console.log(commande,"commande");
   // Exécuter la commande
   document.execCommand(nom, false, argument);
+  console.log(commande,"commande");
 }
 
 function resultat() {
-  var result = document.getElementById("resultat").value = document.getElementById("editeur").innerHTML;
-  $('#contenu').append('<div>'+result+'</div>');
-   console.log(result);
+	var result = document.getElementById("resultat").value 
+	result = document.getElementById("editeur").innerHTML;
+	$('#contenu').append('<div>'+result+'</div>');
+	console.log(result);
 }
+

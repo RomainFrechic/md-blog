@@ -2,7 +2,7 @@
 	"use strict";
 	var app = {
 
-
+		serverUrl: "http://localhost:2000",
 
 		init:function(){
 			this.getMenu();
@@ -11,33 +11,30 @@
 		},
 		listener:function(){
 			$('#menu').on('click','button',function(){
-				console.log($(this).data("url"));
-				app.getMarkdown($(this).data("url"));
+				var url = $(this).data("url");
+				console.log(url);
+				app.getMarkdown(url);
 			});
 		},	
     //Recuperer l'url
     getMarkdown:function(url){
     	$.ajax(url)
     	.done(this.getDone)
-    	.fail(this.getFail)
-    	.always(this.getAlways)
+    	.fail(this.getFail);
     },
 
     getDone:function(response){
     	console.log(response);
     	var converter = new showdown.Converter();
-    	var text = '#article, response';
+
     	var inj = converter.makeHtml(response);
     	$('#article').html(inj);
     },
 
     getFail:function(){
-    	console.log(error);
+    	console.log("error");
     },
 
-    getAlways:function(){
-
-    },
 	//Recuperer le menu.json
 	getMenu:function(){
 		$.ajax('http://localhost:2000/menu.json')
@@ -51,17 +48,23 @@
 		var len = response.menu.length;
 		for(var i=0; i<len; i++){
 			console.log(i);
-			$('#menu').append('<button data-url="http://localhost:2000/'+response.menu[i].path+'">'+response.menu[i].title+'</button>');
+
+			var buttonHtml = '<button data-url="http://localhost:2000/';
+			buttonHtml += response.menu[i].path+'">';
+			buttonHtml += response.menu[i].title+'</button>';
+
+			$('#menu').append(buttonHtml);
 		}
 	},
 
 
 	getMenuFail:function(){
-		console.log(error);
+		console.log("error");
 	},
 
 	getMenuAlways:function(){
-		console.log(completer);
+
+		console.log("completer");
 	},
 
 };
