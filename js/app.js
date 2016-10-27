@@ -12,7 +12,7 @@
 		listener:function(){
 			$('#menu').on('click','button',function(){
 				console.log($(this).data("url"));
-             app.getMarkdown($(this).data("url"));
+				app.getMarkdown($(this).data("url"));
 			});
 		},	
     //Recuperer l'url
@@ -26,18 +26,18 @@
     getDone:function(response){
     	console.log(response);
     	var converter = new showdown.Converter();
-			var text = '#article, response';
-			var inj = converter.makeHtml(response);
-			$('#article').html(inj);
-		},
+    	var text = '#article, response';
+    	var inj = converter.makeHtml(response);
+    	$('#article').html(inj);
+    },
 
-		getFail:function(){
-			console.log(error);
-		},
+    getFail:function(){
+    	console.log(error);
+    },
 
-		getAlways:function(){
+    getAlways:function(){
 
-		},
+    },
 	//Recuperer le menu.json
 	getMenu:function(){
 		$.ajax('http://localhost:2000/menu.json')
@@ -49,10 +49,10 @@
 	getMenuDone:function(response){
 		console.log(response);
 		var len = response.menu.length;
-        for(var i=0; i<len; i++){
-        	console.log(i);
-		$('#menu').append('<button data-url="http://localhost:2000/'+response.menu[i].path+'">'+response.menu[i].title+'</button>');
-        }
+		for(var i=0; i<len; i++){
+			console.log(i);
+			$('#menu').append('<button data-url="http://localhost:2000/'+response.menu[i].path+'">'+response.menu[i].title+'</button>');
+		}
 	},
 
 
@@ -61,7 +61,7 @@
 	},
 
 	getMenuAlways:function(){
-        console.log(completer);
+		console.log(completer);
 	},
 
 };

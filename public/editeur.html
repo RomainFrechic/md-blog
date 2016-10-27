@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Editeur</title>
+	<link rel="stylesheet" href="editeur.css">
+</head>
+<body>
+	<a href='index.html'>Retour</a>
+	<input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');" />
+	<input type="button" value="I" style="font-style: italic;" onclick="commande('italic');" />
+	<input type="button" value="S" style="text-decoration: underline;" onclick="commande('underline');" />
+	<div id="editeur" contentEditable></div>
+	<input type="button" onclick="resultat();" value="Obtenir le HTML" />
+	<br />
+	<div id="resultat"></div>
+	<script src="/node_modules/jquery/dist/jquery.js"></script>
+	<script src="/node_modules/showdown/dist/showdown.js"></script>
+	<script src="editeur.js"></script>
+</body>
+</html>
