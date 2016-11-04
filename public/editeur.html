@@ -6,21 +6,14 @@
 	<link rel="stylesheet" href="editeur.css">
 </head>
 <body>
-	<a href='http://localhost:3000/'>Retour</a>
+	<a href='http://localhost:2015/'>Retour</a>
 
-    <form action = "http://127.0.0.1:2000/process_post" method = "POST">
-         First Name: <input type = "text" name = "first_name"> <br>
-         Last Name: <input type = "text" name = "last_name">
+    <form action = "/process_post" method = "POST">
+         title: <input type = "text" name = "title"> <br>
+         path: <input type = "text" name = "path">
          <input type = "submit" value = "Submit">
     </form>
 
-	<!-- <form action="">
-		<input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');" />
-		<input type="button" value="I" style="font-style: italic;" onclick="commande('italic');" />
-		<input type="button" value="S" style="text-decoration: underline;" onclick="commande('underline');" />
-		<div id="editeur" contentEditable></div>
-		<input type="button" onclick="resultat();" value="Obtenir le HTML" />
-	</form> -->
 	<br />
 	<div id="resultat"></div>
 	<script src="/node_modules/jquery/dist/jquery.js"></script>

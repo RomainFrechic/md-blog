@@ -5,7 +5,6 @@ var fs =require('fs');
 
 // Crée l'application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-
 app.use(express.static('public'));
 app.get('/index.html', function (req, res) {
    res.sendFile( __dirname + "/" + "index.html" );
@@ -14,11 +13,29 @@ app.get('/index.html', function (req, res) {
 app.post('/process_post', urlencodedParser, function (req, res) {
    // Préparer une sortie au format JSON
    response = {
-      first_name:req.body.first_name,
-      last_name:req.body.last_name
+      path:req.body.path,
+      title:req.body.title
    };
    console.log(response);
-   res.end(JSON.stringify(response));
+
+
+
+
+   fs.readFile(__dirname +'/public/menu.json', 'utf8',function(err,data){
+      //transformer en objet
+      var content = JSON.parse(data);
+      //mettre dans le menuJSON
+      content.menu.push(response);
+      //transformer en string
+      var fileStr = JSON.stringify(content);
+      if(err) throw err;
+
+      fs.writeFile(__dirname +'/public/menu.json',fileStr, 'utf8',function(err){
+         if(err) throw err;
+         console.log(fileStr);
+      });
+   });
+
 });
 
 
