@@ -6,15 +6,15 @@ var fs =require('fs');
 // Crée l'application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(express.static('public'));
+app.use(urlencodedParser);
 
-
-app.post('/process_post', urlencodedParser, function (req, res) {
+app.post('/process_post',function (req, res) {
    // Préparer une sortie au format JSON
+   console.log(req.body);
    response = {
-      path:req.body.path,
+      path:"/"+req.body.path+".md",
       title:req.body.title
    };
-
 
 
 
@@ -30,10 +30,13 @@ app.post('/process_post', urlencodedParser, function (req, res) {
 
       fs.writeFile(__dirname +'/public/menu.json',fileStr, 'utf8',function(err){
          if(err) throw err;
-         res.send('ok');
+         
       });
    });
-
+fs.writeFile(__dirname+'/public/'+req.body.path+".md",req.body.file,'utf8',function(err){
+   if(err) throw err;
+   res.send('ok');
+});
 });
 
 
