@@ -1,0 +1,20 @@
+body{
+
+	text-align:justify;
+}
+
+#menu{
+
+     text-align: center;
+}
+
+button{
+	font-size: 25px;
+    border-radius: 10px 10px 10px 10px;
+    background-color: #CADBE9;
+}
+
+#menu{
+	background-color:#D4DFE6 ;
+	height: 80px;
+}

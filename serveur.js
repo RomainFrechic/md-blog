@@ -6,9 +6,7 @@ var fs =require('fs');
 // Crée l'application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(express.static('public'));
-app.get('/index.html', function (req, res) {
-   res.sendFile( __dirname + "/" + "index.html" );
-});
+
 
 app.post('/process_post', urlencodedParser, function (req, res) {
    // Préparer une sortie au format JSON
@@ -16,7 +14,7 @@ app.post('/process_post', urlencodedParser, function (req, res) {
       path:req.body.path,
       title:req.body.title
    };
-   console.log(response);
+
 
 
 
@@ -32,7 +30,7 @@ app.post('/process_post', urlencodedParser, function (req, res) {
 
       fs.writeFile(__dirname +'/public/menu.json',fileStr, 'utf8',function(err){
          if(err) throw err;
-         console.log(fileStr);
+         res.send('ok');
       });
    });
 
@@ -49,13 +47,3 @@ var server = app.listen(2000, function () {
 
 
 
-
-// var express = require('express');
-// var app = express();
-// var bodyParser = require("body-parser");
-
-// app.use(express.static(__dirname +'/public'));
-
-// app.listen(2000, function () {
-// 	console.log('Example app listening on port 2000!');
-// });
